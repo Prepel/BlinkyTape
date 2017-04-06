@@ -4,8 +4,16 @@ import time
 import pymysql
 import math
 import sys
+import signal
 sys.path.append("../")
 from BlinkyTape import BlinkyTape
+
+def signal_handler(signal, frame):
+    print('Exit()')
+    blinkyTape.clear()
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
 
 class InterneKTV(object):
 
